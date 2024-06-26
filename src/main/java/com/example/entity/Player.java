@@ -46,11 +46,11 @@ public class Player extends Entity {
 
     public void setDefaultValues() {
 
-        worldX = gamePanel.tileSize * 23;
-        worldY = gamePanel.tileSize * 21;
+        worldX = gamePanel.tileSize * 11;
+        worldY = gamePanel.tileSize * 35;
         defaultSpeed = 4;
         speed = defaultSpeed;
-        direction = "down";
+        direction = "right";
 
         // Player Status
         level = 1;
@@ -82,9 +82,9 @@ public class Player extends Entity {
 
     public void setDefaultPosition() {
         gamePanel.currentMap = 0;
-        worldX = gamePanel.tileSize * 23;
-        worldY = gamePanel.tileSize * 21;
-        direction = "down";
+        worldX = gamePanel.tileSize * 11;
+        worldY = gamePanel.tileSize * 35;
+        direction = "right";
     }
 
     public void setDialogue() {

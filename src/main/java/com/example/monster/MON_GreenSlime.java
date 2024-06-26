@@ -54,30 +54,30 @@ public class MON_GreenSlime extends Entity {
 
     public void setAction() { // Monster simple ai algorithm
 
-        if (onPath) { 
+        // if (onPath) { 
 
-            // Check if it stops chasing
-            checkStopChasingOrNot(gamePanel.player, 15, 100);
+        //     // Check if it stops chasing
+        //     checkStopChasingOrNot(gamePanel.player, 15, 100);
 
-            // Search the direction to go
-            searchPath(getGoalCol(gamePanel.player), getGoalRow(gamePanel.player));
+        //     // Search the direction to go
+        //     searchPath(getGoalCol(gamePanel.player), getGoalRow(gamePanel.player));
             
-        } else {
+        // } else {
 
-            // Check if it starts chasing
-            checkStartChasingOrNot(gamePanel.player, 5, 100);
+        //     // Check if it starts chasing
+        //     checkStartChasingOrNot(gamePanel.player, 5, 100);
 
             // Get a random direction
             getRandomDirection(120);
 
-        }
+        // }
 
     }
 
     public void damageReaction() {
         actionLockCounter = 0;
-        // direction = gamePanel.player.direction;
-        onPath = true;
+        direction = gamePanel.player.direction;
+        // onPath = true;
     }
 
     public void checkDrop() {

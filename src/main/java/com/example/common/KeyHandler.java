@@ -211,7 +211,7 @@ public class KeyHandler implements KeyListener {
         if (code == KeyEvent.VK_ENTER) {
             if (gamePanel.ui.commandNumber == 0) {
                 gamePanel.currentMusicIndex = 0;
-                gamePanel.eventHandler.teleport(0, 23, 21, GamePanel.OUTSIDE_AREA);
+                gamePanel.eventHandler.teleport(0, 11, 35, GamePanel.OUTSIDE_AREA);
                 gamePanel.resetGame(false);
                 gamePanel.playMusic(0);
             } else if (gamePanel.ui.commandNumber == 1) {

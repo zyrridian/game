@@ -60,12 +60,39 @@ public class EventHandler {
 
         if (canTouchEvent) {
             if (hit(0, 27, 16, "right")) damagePit(27, 16, GamePanel.DIALOGUE_STATE);
-            else if (hit(0, 23, 12, "up")) healingPool(23, 12, GamePanel.DIALOGUE_STATE);
+
+            // ========== Healing Pool ========== // 
+            else if (hit(0, 17, 15, "up")) healingPool(17, 15, GamePanel.DIALOGUE_STATE);
+            else if (hit(0, 18, 15, "up")) healingPool(18, 15, GamePanel.DIALOGUE_STATE);
+            else if (hit(0, 19, 15, "up")) healingPool(19, 15, GamePanel.DIALOGUE_STATE);
+            else if (hit(0, 20, 15, "up")) healingPool(20, 15, GamePanel.DIALOGUE_STATE);
+            else if (hit(0, 21, 15, "up")) healingPool(21, 15, GamePanel.DIALOGUE_STATE);
+            else if (hit(0, 22, 15, "up")) healingPool(22, 15, GamePanel.DIALOGUE_STATE);
+            else if (hit(0, 23, 15, "up")) healingPool(23, 15, GamePanel.DIALOGUE_STATE);
+
+
+            // ========== Teleport ========== //
+            else if (hit(0, 48, 38, "right")) teleport(4, 9, 12, GamePanel.OUTSIDE_AREA);
+            else if (hit(0, 48, 39, "right")) teleport(4, 9, 12, GamePanel.OUTSIDE_AREA);
+            else if (hit(0, 48, 40, "right")) teleport(4, 9, 12, GamePanel.OUTSIDE_AREA);
+            else if (hit(4, 9, 11, "left")) teleport(0, 48, 39, GamePanel.OUTSIDE_AREA);
+            else if (hit(4, 9, 12, "left")) teleport(0, 48, 39, GamePanel.OUTSIDE_AREA);
+            else if (hit(4, 9, 13, "left")) teleport(0, 48, 39, GamePanel.OUTSIDE_AREA);
+
+            else if (hit(4, 33, 10, "up")) teleport(5, 24, 27, GamePanel.OUTSIDE_AREA);
+            else if (hit(4, 34, 10, "up")) teleport(5, 24, 27, GamePanel.OUTSIDE_AREA);
+            else if (hit(4, 35, 10, "up")) teleport(5, 24, 27, GamePanel.OUTSIDE_AREA);
+            else if (hit(4, 36, 10, "up")) teleport(5, 24, 27, GamePanel.OUTSIDE_AREA);
+            else if (hit(4, 37, 10, "up")) teleport(5, 24, 27, GamePanel.OUTSIDE_AREA);
+            else if (hit(4, 38, 10, "up")) teleport(5, 24, 27, GamePanel.OUTSIDE_AREA);
+            else if (hit(4, 39, 10, "up")) teleport(5, 24, 27, GamePanel.OUTSIDE_AREA);
+            else if (hit(5, 24, 237, "down")) teleport(4, 36, 10, GamePanel.OUTSIDE_AREA);
+
             else if (hit(1, 12, 9, "up")) speak(gamePanel.npc[1][0]);
-            else if (hit(0, 10, 39, "any")) teleport(1, 12, 13, GamePanel.INDOOR_AREA);
-            else if (hit(1, 12, 13, "any")) teleport(0, 10, 39, GamePanel.OUTSIDE_AREA);
-            else if (hit(0, 12, 9, "any")) teleport(2, 9, 41, GamePanel.DUNGEON_AREA); // To the dungeon
-            else if (hit(2, 9, 41, "any")) teleport(0, 12, 9, GamePanel.OUTSIDE_AREA); // To the to outside
+            else if (hit(0, 14, 20, "any")) teleport(1, 12, 13, GamePanel.INDOOR_AREA); // To the merchant
+            else if (hit(1, 12, 13, "any")) teleport(0, 14, 20, GamePanel.OUTSIDE_AREA);
+            else if (hit(0, 36, 11, "any")) teleport(2, 9, 41, GamePanel.DUNGEON_AREA); // To the dungeon
+            else if (hit(2, 9, 41, "any")) teleport(0, 36, 11, GamePanel.OUTSIDE_AREA); // To the to outside
             else if (hit(2, 8, 7, "any")) teleport(3, 26, 41, GamePanel.DUNGEON_AREA); // To B2
             else if (hit(3, 26, 41, "any")) teleport(2, 8, 7, GamePanel.DUNGEON_AREA); // To B1
             else if (hit(3, 25, 27, "any")) skeletonLord();
