@@ -86,7 +86,7 @@ public class EventHandler {
             else if (hit(4, 37, 10, "up")) teleport(5, 24, 27, GamePanel.OUTSIDE_AREA);
             else if (hit(4, 38, 10, "up")) teleport(5, 24, 27, GamePanel.OUTSIDE_AREA);
             else if (hit(4, 39, 10, "up")) teleport(5, 24, 27, GamePanel.OUTSIDE_AREA);
-            else if (hit(5, 24, 237, "down")) teleport(4, 36, 10, GamePanel.OUTSIDE_AREA);
+            else if (hit(5, 24, 27, "down")) teleport(4, 36, 10, GamePanel.OUTSIDE_AREA);
 
             else if (hit(1, 12, 9, "up")) speak(gamePanel.npc[1][0]);
             else if (hit(0, 14, 20, "any")) teleport(1, 12, 13, GamePanel.INDOOR_AREA); // To the merchant
