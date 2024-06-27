@@ -25,9 +25,9 @@ public class MON_SkeletonLord extends Entity {
         name = monName;
         defaultSpeed = 1;
         speed = defaultSpeed;
-        maxLife = 200;
+        maxLife = 1000;
         life = maxLife;
-        attack = 10;
+        attack = 50;
         defense = 50;
         exp = 5000;
         knockBackPower = 15;
@@ -108,9 +108,10 @@ public class MON_SkeletonLord extends Entity {
     }
 
     public void setDialogue() {
-        dialogues[0][0] = "No one can steal my treasure!";
-        dialogues[0][1] = "You will die here!";
-        dialogues[0][2] = "WELCOME TO MY DOOM!";
+        dialogues[0][0] = "Kau pasti datang karena penyihir itu.";
+        dialogues[0][1] = "Masih banyak yang tidak kau ketahui.";
+        dialogues[0][2] = "Aku tidak akan membiarkanmu lari.";
+        dialogues[0][3] = "MATILAH DI SINI!!!";
     }
 
     public void setAction() { // Monster simple ai algorithm

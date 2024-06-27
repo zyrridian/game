@@ -20,8 +20,8 @@ public class OBJ_BlueHeart extends Entity {
     }
 
     public void setDialogues() {
-        dialogues[0][0] = "You pick up a beautiful blue gem.";
-        dialogues[0][1] = "You find the Blue Heart, the legendary treasure!";
+        dialogues[0][0] = "Kau mengambil sebuah berlian.";
+        dialogues[0][1] = "Kau menemukan batu legendaris!";
     }
 
     public boolean use(Entity entity) {

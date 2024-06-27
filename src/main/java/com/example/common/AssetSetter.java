@@ -11,7 +11,6 @@ import com.example.monster.MON_SkeletonLord;
 import com.example.monster.MON_Bat;
 import com.example.object.OBJ_Axe;
 import com.example.object.OBJ_BlueHeart;
-import com.example.object.OBJ_Boots;
 import com.example.object.OBJ_Chest;
 import com.example.object.OBJ_Door;
 import com.example.object.OBJ_DoorIron;
