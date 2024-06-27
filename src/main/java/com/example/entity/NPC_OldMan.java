@@ -6,11 +6,13 @@ import com.example.common.GamePanel;
 
 public class NPC_OldMan extends Entity {
 
-    public NPC_OldMan(GamePanel gamePanel) {
+    public static final String npcName = "Old Man";
 
+    public NPC_OldMan(GamePanel gamePanel) {
         super(gamePanel);
 
-        direction = "down";
+        name = npcName;
+        direction = "left";
         speed = 1;
 
         solidArea.x = 8;
@@ -20,7 +22,7 @@ public class NPC_OldMan extends Entity {
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
 
-        dialogueSet = -1;
+        // dialogueSet = -1;
 
         getImage();
         setDialogue();
@@ -39,16 +41,27 @@ public class NPC_OldMan extends Entity {
     }
 
     public void setDialogue() {
-        dialogues[0][0] = "Hello, lad. What're you doing in\nthis island?";
-        dialogues[0][1] = "What? You don't know?\nThat's strange.";
-        dialogues[0][2] = "I used to be a great wizard\nbut now... I'm a bit too old for \ntaking an adventure.";
-        dialogues[0][3] = "Well, good luck on you.";
+        dialogues[0][0] = "Selamat datang, petualang.";
+        dialogues[0][1] = "Kau pasti kebingungan karena tiba-tiba\nberada di tempat yang tidak dikenal.";
+        dialogues[0][2] = "Aku adalah penyihir terhebat di masa lalu.";
+        dialogues[0][3] = "Tapi sekarang...";
+        dialogues[0][4] = "Kekuatanku sudah hilang.";
+        dialogues[0][5] = "..........";
+        dialogues[0][6] = "Itulah sebabnya banyak monster yang\nberkeliaran di sekitar sini.";
+        dialogues[0][7] = "Kau adalah satu-satunya harapanku,\npetualang. Tolong kalahkan monster\npenunggu gua di utara.";
+        dialogues[0][8] = "Bawalah kapak di dalam peti itu beserta\nlentera di sebelahnya. Kau akan sangat\nmembutuhkannya.";
+        dialogues[0][9] = "Selamat berjuang!";
 
-        dialogues[1][0] = "Slimes? Yes, they're everywhere.";
-        dialogues[1][1] = "But they're friendly, so don't kill\nthem. Or else...";
-        dialogues[1][2] = "You will get consequences.";
+        dialogues[1][0] = "Jika kau kelelahan, minumlah air di danau";
+        dialogues[1][1] = "Energimu akan pulih kembali.";
 
-        dialogues[2][0] = "I wonder how to open that door...";
+        dialogues[2][0] = "Legenda mengatakan, ada sebuah perisai\nmerah yang sangat kuat tersembunyi di\npulau ini.";
+        dialogues[2][1] = "Namun kurasa kau tidak membutuhkannya\nuntuk dapat mengalahkan monster\npenunggu gua.";
+        dialogues[2][2] = "Aku sudah melihat petualang lain sepertimu\nyang memiliki nyawa sejumlah\nnegatif sembilan.";
+        dialogues[2][3] = "Dan dia masih hidup.";
+        dialogues[2][4] = "Benar-benar mengerikan...";
+
+        dialogues[3][0] = "Berhentilah berbicara denganku.";
     }
 
     public void setAction() {
@@ -62,6 +75,8 @@ public class NPC_OldMan extends Entity {
             // NPC path follow player
             int goalCol = (gamePanel.player.worldX + gamePanel.player.solidArea.x) / gamePanel.tileSize;
             int goalRow = (gamePanel.player.worldY + gamePanel.player.solidArea.y) / gamePanel.tileSize;
+            // if (nextCol == goalCol && nextRow == goalRow) onPath = false;
+
 
             searchPath(goalCol, goalRow);
 
@@ -92,8 +107,8 @@ public class NPC_OldMan extends Entity {
         startDialogue(this, dialogueSet);
         dialogueSet++;
         if (dialogues[dialogueSet][0] == null) {
-            dialogueSet = 0; // Dialogue will be replayed again
-            // dialogueSet--; // Dialogue will be stuck in the end state
+            // dialogueSet = 0; // Dialogue will be replayed again
+            dialogueSet--; // Dialogue will be stuck in the end state
         }
     }
     

@@ -12,22 +12,33 @@ import com.example.common.GamePanel;
 import com.example.common.UtilityTool;
 
 public class Entity {
-    
+
+    // References
     GamePanel gamePanel;
 
+    // Images
     public BufferedImage up1, up2, left1, left2, down1, down2, right1, right2;
-    public BufferedImage attackUp1, attackUp2, attackDown1, attackDown2, attackLeft1, attackLeft2, attackRight1, attackRight2, guardUp, guardDown, guardLeft, guardRight;
+    public BufferedImage attackUp1, attackUp2, attackDown1, attackDown2, attackLeft1, attackLeft2, attackRight1, attackRight2;
+    public BufferedImage guardUp, guardDown, guardLeft, guardRight;
     public BufferedImage image, image2, image3;
+
+    // Collision Areas
     public Rectangle solidArea = new Rectangle(0, 0, 48, 48);
     public Rectangle attackArea = new Rectangle(0, 0, 0, 0);
     public int solidAreaDefaultX, solidAreaDefaultY;
     public boolean collision = false;
+
+    // Dialogues
     public String dialogues[][] = new String[20][20];
+
+    // Entity Linking
     public Entity attacker;
     public Entity linkedEntity;
+
+    // Temporary
     public boolean temp = false;
 
-    // State
+    // Entity State
     public int worldX, worldY;
     public String direction = "down";
     public int spriteNumber = 1;
@@ -45,13 +56,13 @@ public class Entity {
     public boolean guarding = false;
     public boolean transparent = false;
     public boolean offBalance = false;
-    public Entity loot;
     public boolean opened = false;
     public boolean inRage = false;
     public boolean sleep = false;
     public boolean drawing = true; // to stop drawing player when camera moving in cutscene
+    public Entity loot;
 
-    // Counter
+    // Counters
     public int spriteCounter = 0;
     public int actionLockCounter = 0;
     public int invincibleCounter = 0;
@@ -102,8 +113,8 @@ public class Entity {
     public int amount = 1;
     public int lightRadius;
 
-    // Type
-    public int type; // 0 = player, 1 = npc, 2 = monster
+    // Entity Types
+    public int type;
     public final int type_player = 0;
     public final int type_npc = 1;
     public final int type_monster = 2;
@@ -120,15 +131,19 @@ public class Entity {
         this.gamePanel = gamePanel;
     }
 
+    // ======================================== Getters for Screen Position ======================================== //
+
     public int getScreenX() {
         int screenX = worldX - gamePanel.player.worldX + gamePanel.player.screenX;
         return screenX;
     }
-
+    
     public int getScreenY() {
         int screenY = worldY - gamePanel.player.worldY + gamePanel.player.screenY;
         return screenY;
     }
+
+    // ======================================== Getters for Entity Edges ======================================== //
 
     public int getLeftX() {
         return worldX + solidArea.x;
@@ -146,6 +161,8 @@ public class Entity {
         return worldY + solidArea.y + solidArea.height;
     }
 
+    // ======================================== Getters for Grid Position ======================================== //
+
     public int getCol() {
         return (worldX + solidArea.x) / gamePanel.tileSize;
     }
@@ -153,6 +170,8 @@ public class Entity {
     public int getRow() {
         return (worldY + solidArea.y) / gamePanel.tileSize;
     }
+
+    // ======================================== Getters for Entity Center ======================================== //
 
     public int getCenterX() {
         int centerX = worldX + left1.getWidth() / 2;
@@ -163,6 +182,8 @@ public class Entity {
         int centerY = worldY + up1.getHeight() / 2;
         return centerY;
     }
+
+    // ======================================== Distance Calculations ======================================== //
 
     public int getXdistance(Entity target) {
         int xDistance = Math.abs(getCenterX() - target.getCenterX());
@@ -179,6 +200,8 @@ public class Entity {
         return tileDistance;
     }
 
+    // ======================================== Getters for Target Position ======================================== //
+
     public int getGoalCol(Entity target) {
         int goalCol = (target.worldX + target.solidArea.x) / gamePanel.tileSize;
         return goalCol;
@@ -188,6 +211,8 @@ public class Entity {
         int goalRow = (target.worldY + target.solidArea.y) / gamePanel.tileSize;
         return goalRow;
     }
+
+    // ======================================== State Reset ======================================== //
 
     public void resetCounter() {
         spriteCounter = 0;
@@ -202,25 +227,19 @@ public class Entity {
         slimeKilled = 0;
     }
 
-    public void setLoot(Entity entity) {
+    // ======================================== Action Setters ======================================== //
 
-    }
+    public void setLoot(Entity entity) {}
 
-    public void setAction() {
+    public void setAction() {}
 
-    }
+    public void move(String direction) {}
 
-    public void move(String direction) {
+    public void damageReaction() {}
 
-    }
+    public void speak() {}
 
-    public void damageReaction() {
-
-    }
-
-    public void speak() {
-
-    }
+    // ======================================== Interaction Methods ======================================== //
 
     public void facePlayer() {
         // Turn NPC direction to player when speak
@@ -238,17 +257,15 @@ public class Entity {
         dialogueSet = setNumber;
     }
 
-    public void interact() {
-
-    }
+    public void interact() {}
 
     public boolean use(Entity entity) {
         return false;
     }
 
-    public void checkDrop() {
+    // ======================================== Drop Methods ======================================== //
 
-    }
+    public void checkDrop() {}
 
     public void dropItem(Entity droppedItem) {
         for (int i = 0; i < gamePanel.obj[1].length; i++) {
@@ -260,6 +277,8 @@ public class Entity {
             }
         }
     }
+
+    // ======================================== Particle Methods ======================================== //
 
     public Color getParticleColor() {
         Color color = null;
@@ -300,6 +319,8 @@ public class Entity {
 
     }
 
+    // ======================================== Collision Handling ======================================== //
+
     public void checkCollision() {
         collisionOn = false;
         gamePanel.collisionChecker.checkTile(this);
@@ -311,89 +332,6 @@ public class Entity {
         if (this.type == type_monster && contactPlayer) {
             damagePlayer(attack);
         }
-    }
-
-    public void update() {
-
-        if (!sleep) { // Update entity only when sleep is false
-
-            if (knockback) {
-         
-                checkCollision();
-    
-                if (collisionOn) {
-                    knockBackCounter = 0;
-                    knockback = false;
-                    speed = defaultSpeed;
-                } else if (!collisionOn) {
-                    switch (knockbackDirection) {
-                        case "up": worldY -= speed; break;
-                        case "down": worldY += speed; break;
-                        case "left": worldX -= speed; break;
-                        case "right": worldX += speed; break;
-                    }
-                }
-                
-                knockBackCounter++;
-                if (knockBackCounter == 10) {
-                    knockBackCounter = 0;
-                    knockback = false;
-                    speed = defaultSpeed;
-                }
-                
-            } else if (attacking) {
-                attacking();
-            } else {
-    
-                setAction();
-                checkCollision();
-    
-                // If collision is false, player can move
-                if (!collisionOn) {
-                    switch (direction) {
-                        case "up": worldY -= speed; break;
-                        case "down": worldY += speed; break;
-                        case "left": worldX -= speed; break;
-                        case "right": worldX += speed; break;
-                    }
-                }
-    
-                // Change walking image every 10 frames
-                spriteCounter++;
-                if (spriteCounter > 24) {
-                    if (spriteNumber == 1) {
-                        spriteNumber = 2;
-                    } else if (spriteNumber == 2) {
-                        spriteNumber = 1;
-                    }
-                    spriteCounter = 0;
-                }
-    
-            }
-    
-            if (invincible) {
-                invincibleCounter++;
-                if (invincibleCounter > 40) {
-                    invincible = false;
-                    invincibleCounter = 0;
-                }
-            }
-    
-            if (shotAvailableCounter < 30) {
-                shotAvailableCounter++;
-            }
-    
-            // Offbalance active after parry
-            if (offBalance == true) {
-                offBalanceCounter++;
-                if (offBalanceCounter > 60) {
-                    offBalance = false;
-                    offBalanceCounter = 0;
-                }
-            }
-            
-        }
-    
     }
 
     public void checkAttackOrNot(int rate, int straight, int horizontal) {
@@ -553,7 +491,6 @@ public class Entity {
 
     }
 
-
     public void damagePlayer(int attack) {
         if (!gamePanel.player.invincible) {
 
@@ -611,6 +548,91 @@ public class Entity {
             inCamera = true;
         }
         return inCamera;
+    }
+
+    // ======================================== Update and Draw ======================================== //
+    
+    public void update() {
+
+        if (!sleep) { // Update entity only when sleep is false
+
+            if (knockback) {
+         
+                checkCollision();
+    
+                if (collisionOn) {
+                    knockBackCounter = 0;
+                    knockback = false;
+                    speed = defaultSpeed;
+                } else if (!collisionOn) {
+                    switch (knockbackDirection) {
+                        case "up": worldY -= speed; break;
+                        case "down": worldY += speed; break;
+                        case "left": worldX -= speed; break;
+                        case "right": worldX += speed; break;
+                    }
+                }
+                
+                knockBackCounter++;
+                if (knockBackCounter == 10) {
+                    knockBackCounter = 0;
+                    knockback = false;
+                    speed = defaultSpeed;
+                }
+                
+            } else if (attacking) {
+                attacking();
+            } else {
+    
+                setAction();
+                checkCollision();
+    
+                // If collision is false, player can move
+                if (!collisionOn) {
+                    switch (direction) {
+                        case "up": worldY -= speed; break;
+                        case "down": worldY += speed; break;
+                        case "left": worldX -= speed; break;
+                        case "right": worldX += speed; break;
+                    }
+                }
+    
+                // Change walking image every 10 frames
+                spriteCounter++;
+                if (spriteCounter > 24) {
+                    if (spriteNumber == 1) {
+                        spriteNumber = 2;
+                    } else if (spriteNumber == 2) {
+                        spriteNumber = 1;
+                    }
+                    spriteCounter = 0;
+                }
+    
+            }
+    
+            if (invincible) {
+                invincibleCounter++;
+                if (invincibleCounter > 40) {
+                    invincible = false;
+                    invincibleCounter = 0;
+                }
+            }
+    
+            if (shotAvailableCounter < 30) {
+                shotAvailableCounter++;
+            }
+    
+            // Offbalance active after parry
+            if (offBalance == true) {
+                offBalanceCounter++;
+                if (offBalanceCounter > 60) {
+                    offBalance = false;
+                    offBalanceCounter = 0;
+                }
+            }
+            
+        }
+    
     }
 
     public void draw(Graphics2D g2) {
@@ -767,9 +789,9 @@ public class Entity {
             }
 
             // If reaches the goal, stop the search (disable it if you want npc follows user)
-            // int nextCol = gamePanel.pathFinder.pathList.get(0).col;
-            // int nextRow = gamePanel.pathFinder.pathList.get(0).row;
-            // if (nextCol == goalCol && nextRow == goalRow) onPath = false;
+            int nextCol = gamePanel.pathFinder.pathList.get(0).col;
+            int nextRow = gamePanel.pathFinder.pathList.get(0).row;
+            if (nextCol == goalCol && nextRow == goalRow) onPath = false;
 
         }
 

@@ -4,6 +4,7 @@ import java.awt.AlphaComposite;
 import java.awt.Color;
 import java.awt.Graphics2D;
 
+import com.example.entity.NPC_OldMan;
 import com.example.entity.PlayerDummy;
 import com.example.monster.MON_SkeletonLord;
 import com.example.object.OBJ_BlueHeart;
@@ -21,21 +22,18 @@ public class CutsceneManager {
     public final int NA = 0;
     public final int skeletonLord = 1;
     public final int ending = 2;
+    public final int opening = 3;
     int counter = 0;
     float alpha = 0F;
     int y;
 
     public CutsceneManager(GamePanel gamePanel) {
         this.gamePanel = gamePanel;
-        endCredit = "Program/Music/Art\n"
-                  + "Me"
+        endCredit = "Program/Desain/Music/Skenario"
+                  + "Iqbal D.\n"
+                  + "Renaldy L.\n"
+                  + "Rezky A.\n"
                   + "\n\n\n\n\n\n\n\n\n\n\n\n\n"
-                  + "Special Thanks\n"
-                  + "RyiSnow\n"
-                  + "Someone\n"
-                  + "Someone\n"
-                  + "Someone\n"
-                  + "Someone\n\n\n\n\n\n"
                   + "Thank you for playing!";
     }
 
@@ -45,8 +43,89 @@ public class CutsceneManager {
         switch (sceneNumber) {
             case skeletonLord: scene_skeletonLord(); break;
             case ending: scene_ending(); break;
+            case opening: scene_opening(); break;
         }
     }
+
+    
+
+    public void scene_opening() {
+
+        // Shut the iron door
+        if (scenePhase == 0) {
+            // Search a vacant slot for the dummy
+            for (int i = 0; i < gamePanel.npc[1].length; i++) {
+                if (gamePanel.npc[gamePanel.currentMap][i] == null) {
+                    gamePanel.npc[gamePanel.currentMap][i] = new PlayerDummy(gamePanel);
+                    gamePanel.npc[gamePanel.currentMap][i].worldX = gamePanel.player.worldX;
+                    gamePanel.npc[gamePanel.currentMap][i].worldY = gamePanel.player.worldY;
+                    gamePanel.npc[gamePanel.currentMap][i].direction = gamePanel.player.direction;
+                    break;
+                }
+            }
+
+            gamePanel.player.drawing = false;
+            scenePhase++;
+        }
+
+        // Moving the camera upward and use dummy player (above this code) image because the current player image is invincible
+        if (scenePhase == 1) {
+            gamePanel.player.worldX += 2;
+            if (gamePanel.player.worldX > gamePanel.tileSize * 15) {
+                scenePhase++;
+            }
+        }
+
+        if (scenePhase == 2) {
+            for (int i = 0; i < gamePanel.npc[1].length; i++) {
+                if (gamePanel.npc[gamePanel.currentMap][i] != null &&
+                    gamePanel.npc[gamePanel.currentMap][i].name.equals(NPC_OldMan.npcName)
+                ) {
+                    gamePanel.ui.npc = gamePanel.npc[gamePanel.currentMap][i];
+                    scenePhase++;
+                    break;
+                }
+            }
+        }
+
+        // Boss speak
+        if (scenePhase == 3) {
+            gamePanel.ui.drawDialogueScreen();
+        }
+
+        // Return camera to the player
+        if (scenePhase == 4) {
+            
+            // Remove the dummy
+            for (int i = 0; i < gamePanel.npc[1].length; i++) {
+                if (gamePanel.npc[gamePanel.currentMap][i] != null &&
+                    gamePanel.npc[gamePanel.currentMap][i].name == PlayerDummy.npcName
+                ) {
+                    // Restore player position
+                    gamePanel.player.worldX = gamePanel.npc[gamePanel.currentMap][i].worldX;
+                    gamePanel.player.worldY = gamePanel.npc[gamePanel.currentMap][i].worldY;
+                    gamePanel.npc[gamePanel.currentMap][i] = null;
+                    break;
+                }
+            }
+
+            // Start drawing the player
+            gamePanel.player.drawing = true;
+
+            // Reset
+            sceneNumber = NA;
+            scenePhase = 0;
+            gamePanel.gameState = GamePanel.PLAY_STATE;
+
+            // Change the music
+            // gamePanel.stopMusic();
+            gamePanel.playMusic(0);
+
+        }
+
+       
+    }
+
 
     public void scene_skeletonLord() {
 
@@ -183,11 +262,14 @@ public class CutsceneManager {
             if (alpha > 1F) {
                 alpha = 1F;
             }
-            String text = "After the fierce battle with the Skeleton Lord,\n"
-                        + "the Blue Boy finally found the legendary treasure.\n"
-                        + "But this is not the end of his journey.\n"
-                        + "The Blue Boy's adventure has just begun.";
+            String text = "Setelah perjuangan berat melawan monster  penunggu gua,\n"
+                        + "akhirnya petualang berhasil menyelamatkan pulau ini.\n"
+                        + "Tapi ini bukan akhir dari segalanya, karena monster\n"
+                        + "di pulau ini masih terus bermunculan tanpa henti.\n"
+                        + "Keberadaan penduduk pulau lainnya masih belum diketahui."
+                        + "Petualangan Echoes of Ethernity baru saja dimulai.";
             drawString(alpha, 30F, 200, text, 70);
+            gamePanel.playMusic(23);
             
             if (counterReached(600)) {
                 scenePhase++;
@@ -199,7 +281,6 @@ public class CutsceneManager {
             drawString(1F, 100F, gamePanel.screenHeight / 2, "Echoes of Eternity", 40);
             
             if (counterReached(480)) {
-                gamePanel.playMusic(22);
                 scenePhase++;
             }
         }

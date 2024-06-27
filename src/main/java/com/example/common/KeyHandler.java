@@ -70,8 +70,10 @@ public class KeyHandler implements KeyListener {
             if (code == KeyEvent.VK_ENTER) {
                 gamePanel.playSoundEffect(3);
                 if (gamePanel.ui.commandNumber == 0) {
-                    gamePanel.gameState = GamePanel.PLAY_STATE;
-                    gamePanel.playMusic(0);
+                    // gamePanel.gameState = GamePanel.PLAY_STATE;
+                    // gamePanel.playMusic(0);
+                    gamePanel.gameState = GamePanel.CUTSCENE_STATE;
+                    gamePanel.cManager.sceneNumber = gamePanel.cManager.opening;
                 }
                 if (gamePanel.ui.commandNumber == 1) {
                     gamePanel.saveLoad.load();
@@ -211,7 +213,7 @@ public class KeyHandler implements KeyListener {
         if (code == KeyEvent.VK_ENTER) {
             if (gamePanel.ui.commandNumber == 0) {
                 gamePanel.currentMusicIndex = 0;
-                gamePanel.eventHandler.teleport(0, 23, 21, GamePanel.OUTSIDE_AREA);
+                gamePanel.eventHandler.teleport(0, 11, 35, GamePanel.OUTSIDE_AREA);
                 gamePanel.resetGame(false);
                 gamePanel.playMusic(0);
             } else if (gamePanel.ui.commandNumber == 1) {

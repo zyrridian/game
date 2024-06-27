@@ -16,4 +16,5 @@ public class OBJ_Shield_Blue extends Entity {
         description = "[" + name + "]\nA shiny blue shield.";
         price = 250;
     }
+    
 }

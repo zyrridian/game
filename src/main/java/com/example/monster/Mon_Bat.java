@@ -8,11 +8,11 @@ import com.example.object.OBJ_Coin_Bronze;
 import com.example.object.OBJ_Heart;
 import com.example.object.OBJ_Mana_Crystal;
 
-public class Mon_Bat extends Entity {
+public class MON_Bat extends Entity {
     
     GamePanel gamePanel;
 
-    public Mon_Bat(GamePanel gamePanel) {
+    public MON_Bat(GamePanel gamePanel) {
 
         super(gamePanel);
         this.gamePanel = gamePanel;

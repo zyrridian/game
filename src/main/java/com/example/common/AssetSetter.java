@@ -8,21 +8,18 @@ import com.example.monster.MON_GreenSlime;
 import com.example.monster.MON_Orc;
 import com.example.monster.MON_RedSlime;
 import com.example.monster.MON_SkeletonLord;
-import com.example.monster.Mon_Bat;
+import com.example.monster.MON_Bat;
 import com.example.object.OBJ_Axe;
 import com.example.object.OBJ_BlueHeart;
 import com.example.object.OBJ_Boots;
 import com.example.object.OBJ_Chest;
 import com.example.object.OBJ_Door;
 import com.example.object.OBJ_DoorIron;
-import com.example.object.OBJ_Heart;
 import com.example.object.OBJ_Key;
 import com.example.object.OBJ_Lantern;
-import com.example.object.OBJ_Mana_Crystal;
 import com.example.object.OBJ_Pickaxe;
 import com.example.object.OBJ_Potion_Red;
-import com.example.object.OBJ_Shield_Blue;
-import com.example.object.OBJ_Tent;
+import com.example.object.OBJ_Shield_Red;
 import com.example.tile_interactive.IT_DestructibleWall;
 import com.example.tile_interactive.IT_DryTree;
 import com.example.tile_interactive.IT_MetalPlate;
@@ -40,69 +37,41 @@ public class AssetSetter {
         int mapNumber = 0;
         int i = 0;
 
-        gamePanel.obj[mapNumber][i] = new OBJ_Key(gamePanel);
-        gamePanel.obj[mapNumber][i].worldX = gamePanel.tileSize * 25;
-        gamePanel.obj[mapNumber][i].worldY = gamePanel.tileSize * 23;
-        i++;
-
-        gamePanel.obj[mapNumber][i] = new OBJ_Key(gamePanel);
-        gamePanel.obj[mapNumber][i].worldX = gamePanel.tileSize * 21;
-        gamePanel.obj[mapNumber][i].worldY = gamePanel.tileSize * 19;
-        i++;
-
         gamePanel.obj[mapNumber][i] = new OBJ_Lantern(gamePanel);
-        gamePanel.obj[mapNumber][i].worldX = gamePanel.tileSize * 18;
-        gamePanel.obj[mapNumber][i].worldY = gamePanel.tileSize * 20;
+        gamePanel.obj[mapNumber][i].worldX = gamePanel.tileSize * 10;
+        gamePanel.obj[mapNumber][i].worldY = gamePanel.tileSize * 33;
         i++;
 
-        gamePanel.obj[mapNumber][i] = new OBJ_Tent(gamePanel);
-        gamePanel.obj[mapNumber][i].worldX = gamePanel.tileSize * 19;
-        gamePanel.obj[mapNumber][i].worldY = gamePanel.tileSize * 20;
+        gamePanel.obj[mapNumber][i] = new OBJ_Chest(gamePanel);
+        gamePanel.obj[mapNumber][i].setLoot(new OBJ_Axe(gamePanel));
+        gamePanel.obj[mapNumber][i].worldX = gamePanel.tileSize * 11;
+        gamePanel.obj[mapNumber][i].worldY = gamePanel.tileSize * 33;
         i++;
 
-        gamePanel.obj[mapNumber][i] = new OBJ_Axe(gamePanel);
-        gamePanel.obj[mapNumber][i].worldX = gamePanel.tileSize * 33;
-        gamePanel.obj[mapNumber][i].worldY = gamePanel.tileSize * 21;
-        i++;
-
-        gamePanel.obj[mapNumber][i] = new OBJ_Shield_Blue(gamePanel);
-        gamePanel.obj[mapNumber][i].worldX = gamePanel.tileSize * 35;
-        gamePanel.obj[mapNumber][i].worldY = gamePanel.tileSize * 21;
-        i++;
-
-        gamePanel.obj[mapNumber][i] = new OBJ_Potion_Red(gamePanel);
-        gamePanel.obj[mapNumber][i].worldX = gamePanel.tileSize * 22;
-        gamePanel.obj[mapNumber][i].worldY = gamePanel.tileSize * 27;
-        i++;
-
-        gamePanel.obj[mapNumber][i] = new OBJ_Heart(gamePanel);
-        gamePanel.obj[mapNumber][i].worldX = gamePanel.tileSize * 22;
+        gamePanel.obj[mapNumber][i] = new OBJ_Chest(gamePanel);
+        gamePanel.obj[mapNumber][i].setLoot(new OBJ_Key(gamePanel));
+        gamePanel.obj[mapNumber][i].worldX = gamePanel.tileSize * 24;
         gamePanel.obj[mapNumber][i].worldY = gamePanel.tileSize * 29;
         i++;
 
-        gamePanel.obj[mapNumber][i] = new OBJ_Mana_Crystal(gamePanel);
-        gamePanel.obj[mapNumber][i].worldX = gamePanel.tileSize * 22;
-        gamePanel.obj[mapNumber][i].worldY = gamePanel.tileSize * 31;
+        gamePanel.obj[mapNumber][i] = new OBJ_Chest(gamePanel);
+        gamePanel.obj[mapNumber][i].setLoot(new OBJ_Potion_Red(gamePanel));
+        gamePanel.obj[mapNumber][i].worldX = gamePanel.tileSize * 30;
+        gamePanel.obj[mapNumber][i].worldY = gamePanel.tileSize * 15;
         i++;
 
         gamePanel.obj[mapNumber][i] = new OBJ_Door(gamePanel);
         gamePanel.obj[mapNumber][i].worldX = gamePanel.tileSize * 14;
-        gamePanel.obj[mapNumber][i].worldY = gamePanel.tileSize * 28;
-        i++;
-
-        gamePanel.obj[mapNumber][i] = new OBJ_Door(gamePanel);
-        gamePanel.obj[mapNumber][i].worldX = gamePanel.tileSize * 12;
-        gamePanel.obj[mapNumber][i].worldY = gamePanel.tileSize * 12;
-        i++;
-
-        gamePanel.obj[mapNumber][i] = new OBJ_Chest(gamePanel);
-        gamePanel.obj[mapNumber][i].setLoot(new OBJ_Boots(gamePanel));
-        gamePanel.obj[mapNumber][i].worldX = gamePanel.tileSize * 38;
-        gamePanel.obj[mapNumber][i].worldY = gamePanel.tileSize * 23;
+        gamePanel.obj[mapNumber][i].worldY = gamePanel.tileSize * 24;
         i++;
 
         mapNumber = 2;
         i = 0;
+
+        gamePanel.obj[mapNumber][i] = new OBJ_Door(gamePanel);
+        gamePanel.obj[mapNumber][i].worldX = gamePanel.tileSize * 9;
+        gamePanel.obj[mapNumber][i].worldY = gamePanel.tileSize * 39;
+        i++;
 
         gamePanel.obj[mapNumber][i] = new OBJ_Chest(gamePanel);
         gamePanel.obj[mapNumber][i].setLoot(new OBJ_Pickaxe(gamePanel));
@@ -146,6 +115,21 @@ public class AssetSetter {
         gamePanel.obj[mapNumber][i].worldY = gamePanel.tileSize * 8;
         i++;
 
+        mapNumber = 6;
+        i = 0;
+        
+        gamePanel.obj[mapNumber][i] = new OBJ_Chest(gamePanel);
+        gamePanel.obj[mapNumber][i].setLoot(new OBJ_Shield_Red(gamePanel));
+        gamePanel.obj[mapNumber][i].worldX = gamePanel.tileSize * 41;
+        gamePanel.obj[mapNumber][i].worldY = gamePanel.tileSize * 32;
+        i++;
+        
+        gamePanel.obj[mapNumber][i] = new OBJ_Chest(gamePanel);
+        gamePanel.obj[mapNumber][i].setLoot(new OBJ_Key(gamePanel));
+        gamePanel.obj[mapNumber][i].worldX = gamePanel.tileSize * 23;
+        gamePanel.obj[mapNumber][i].worldY = gamePanel.tileSize * 31;
+        i++;
+
     }
 
     public void setNPC() {
@@ -155,7 +139,7 @@ public class AssetSetter {
 
         gamePanel.npc[mapNumber][i] = new NPC_OldMan(gamePanel);
         gamePanel.npc[mapNumber][i].worldX = gamePanel.tileSize * 21;
-        gamePanel.npc[mapNumber][i].worldY = gamePanel.tileSize * 21;
+        gamePanel.npc[mapNumber][i].worldY = gamePanel.tileSize * 35;
         i++;
 
         mapNumber = 1;
@@ -193,88 +177,76 @@ public class AssetSetter {
 
         // bottom center
         gamePanel.monster[mapNumber][i] = new MON_GreenSlime(gamePanel);
-        gamePanel.monster[mapNumber][i].worldX = gamePanel.tileSize * 23;
-        gamePanel.monster[mapNumber][i].worldY = gamePanel.tileSize * 36;
+        gamePanel.monster[mapNumber][i].worldX = gamePanel.tileSize * 34;
+        gamePanel.monster[mapNumber][i].worldY = gamePanel.tileSize * 39;
         i++;
 
         gamePanel.monster[mapNumber][i] = new MON_GreenSlime(gamePanel);
-        gamePanel.monster[mapNumber][i].worldX = gamePanel.tileSize * 23;
-        gamePanel.monster[mapNumber][i].worldY = gamePanel.tileSize * 37;
+        gamePanel.monster[mapNumber][i].worldX = gamePanel.tileSize * 35;
+        gamePanel.monster[mapNumber][i].worldY = gamePanel.tileSize * 39;
         i++;
         
-        // bottom center
         gamePanel.monster[mapNumber][i] = new MON_GreenSlime(gamePanel);
-        gamePanel.monster[mapNumber][i].worldX = gamePanel.tileSize * 25;
-        gamePanel.monster[mapNumber][i].worldY = gamePanel.tileSize * 38;
+        gamePanel.monster[mapNumber][i].worldX = gamePanel.tileSize * 36;
+        gamePanel.monster[mapNumber][i].worldY = gamePanel.tileSize * 39;
         i++;
 
         gamePanel.monster[mapNumber][i] = new MON_GreenSlime(gamePanel);
-        gamePanel.monster[mapNumber][i].worldX = gamePanel.tileSize * 21;
+        gamePanel.monster[mapNumber][i].worldX = gamePanel.tileSize * 35;
         gamePanel.monster[mapNumber][i].worldY = gamePanel.tileSize * 37;
         i++;
 
         gamePanel.monster[mapNumber][i] = new MON_GreenSlime(gamePanel);
-        gamePanel.monster[mapNumber][i].worldX = gamePanel.tileSize * 23;
-        gamePanel.monster[mapNumber][i].worldY = gamePanel.tileSize * 38;
-        i++;
-
-        // bottom right
-        gamePanel.monster[mapNumber][i] = new MON_GreenSlime(gamePanel);
-        gamePanel.monster[mapNumber][i].worldX = gamePanel.tileSize * 37;
-        gamePanel.monster[mapNumber][i].worldY = gamePanel.tileSize * 35;
-        i++;
-
-        gamePanel.monster[mapNumber][i] = new MON_GreenSlime(gamePanel);
-        gamePanel.monster[mapNumber][i].worldX = gamePanel.tileSize * 37;
-        gamePanel.monster[mapNumber][i].worldY = gamePanel.tileSize * 36;
+        gamePanel.monster[mapNumber][i].worldX = gamePanel.tileSize * 35;
+        gamePanel.monster[mapNumber][i].worldY = gamePanel.tileSize * 40;
         i++;
 
         // top right
         gamePanel.monster[mapNumber][i] = new MON_RedSlime(gamePanel);
-        gamePanel.monster[mapNumber][i].worldX = gamePanel.tileSize * 38;
-        gamePanel.monster[mapNumber][i].worldY = gamePanel.tileSize * 12;
-        i++;
-
-        gamePanel.monster[mapNumber][i] = new MON_RedSlime(gamePanel);
         gamePanel.monster[mapNumber][i].worldX = gamePanel.tileSize * 35;
-        gamePanel.monster[mapNumber][i].worldY = gamePanel.tileSize * 12;
+        gamePanel.monster[mapNumber][i].worldY = gamePanel.tileSize * 13;
         i++;
 
         gamePanel.monster[mapNumber][i] = new MON_RedSlime(gamePanel);
         gamePanel.monster[mapNumber][i].worldX = gamePanel.tileSize * 36;
-        gamePanel.monster[mapNumber][i].worldY = gamePanel.tileSize * 9;
+        gamePanel.monster[mapNumber][i].worldY = gamePanel.tileSize * 13;
+        i++;
+
+        gamePanel.monster[mapNumber][i] = new MON_RedSlime(gamePanel);
+        gamePanel.monster[mapNumber][i].worldX = gamePanel.tileSize * 39;
+        gamePanel.monster[mapNumber][i].worldY = gamePanel.tileSize * 14;
         i++;
 
         // bottom left
         gamePanel.monster[mapNumber][i] = new MON_Orc(gamePanel);
-        gamePanel.monster[mapNumber][i].worldX = gamePanel.tileSize * 12;
+        gamePanel.monster[mapNumber][i].worldX = gamePanel.tileSize * 28;
         gamePanel.monster[mapNumber][i].worldY = gamePanel.tileSize * 32;
         i++;
 
         mapNumber = 2;
         i = 0;
 
-        gamePanel.monster[mapNumber][i] = new Mon_Bat(gamePanel);
+        gamePanel.monster[mapNumber][i] = new MON_Bat(gamePanel);
         gamePanel.monster[mapNumber][i].worldX = gamePanel.tileSize * 34;
         gamePanel.monster[mapNumber][i].worldY = gamePanel.tileSize * 39;
         i++;
 
-        gamePanel.monster[mapNumber][i] = new Mon_Bat(gamePanel);
+        gamePanel.monster[mapNumber][i] = new MON_Bat(gamePanel);
         gamePanel.monster[mapNumber][i].worldX = gamePanel.tileSize * 36;
         gamePanel.monster[mapNumber][i].worldY = gamePanel.tileSize * 25;
         i++;
 
-        gamePanel.monster[mapNumber][i] = new Mon_Bat(gamePanel);
+        gamePanel.monster[mapNumber][i] = new MON_Bat(gamePanel);
         gamePanel.monster[mapNumber][i].worldX = gamePanel.tileSize * 39;
         gamePanel.monster[mapNumber][i].worldY = gamePanel.tileSize * 26;
         i++;
 
-        gamePanel.monster[mapNumber][i] = new Mon_Bat(gamePanel);
+        gamePanel.monster[mapNumber][i] = new MON_Bat(gamePanel);
         gamePanel.monster[mapNumber][i].worldX = gamePanel.tileSize * 28;
         gamePanel.monster[mapNumber][i].worldY = gamePanel.tileSize * 11;
         i++;
 
-        gamePanel.monster[mapNumber][i] = new Mon_Bat(gamePanel);
+        gamePanel.monster[mapNumber][i] = new MON_Bat(gamePanel);
         gamePanel.monster[mapNumber][i].worldX = gamePanel.tileSize * 10;
         gamePanel.monster[mapNumber][i].worldY = gamePanel.tileSize * 19;
         i++;
@@ -288,6 +260,39 @@ public class AssetSetter {
             gamePanel.monster[mapNumber][i].worldY = gamePanel.tileSize * 16;
             i++;
         }
+
+        mapNumber = 6;
+        i = 0;
+        
+        gamePanel.monster[mapNumber][i] = new MON_Orc(gamePanel);
+        gamePanel.monster[mapNumber][i].worldX = gamePanel.tileSize * 25;
+        gamePanel.monster[mapNumber][i].worldY = gamePanel.tileSize * 20;
+        i++;
+        
+        gamePanel.monster[mapNumber][i] = new MON_Bat(gamePanel);
+        gamePanel.monster[mapNumber][i].worldX = gamePanel.tileSize * 40;
+        gamePanel.monster[mapNumber][i].worldY = gamePanel.tileSize * 17;
+        i++;
+        
+        gamePanel.monster[mapNumber][i] = new MON_Orc(gamePanel);
+        gamePanel.monster[mapNumber][i].worldX = gamePanel.tileSize * 36;
+        gamePanel.monster[mapNumber][i].worldY = gamePanel.tileSize * 28;
+        i++;
+        
+        gamePanel.monster[mapNumber][i] = new MON_Orc(gamePanel);
+        gamePanel.monster[mapNumber][i].worldX = gamePanel.tileSize * 25;
+        gamePanel.monster[mapNumber][i].worldY = gamePanel.tileSize * 20;
+        i++;
+        
+        gamePanel.monster[mapNumber][i] = new MON_Bat(gamePanel);
+        gamePanel.monster[mapNumber][i].worldX = gamePanel.tileSize * 18;
+        gamePanel.monster[mapNumber][i].worldY = gamePanel.tileSize * 31;
+        i++;
+        
+        gamePanel.monster[mapNumber][i] = new MON_Bat(gamePanel);
+        gamePanel.monster[mapNumber][i].worldX = gamePanel.tileSize * 21;
+        gamePanel.monster[mapNumber][i].worldY = gamePanel.tileSize * 26;
+        i++;
         
     }
     
@@ -296,13 +301,13 @@ public class AssetSetter {
         int mapNumber = 0;
         int i = 0;
 
-        gamePanel.iTile[mapNumber][i] = new IT_DryTree(gamePanel, 27, 12); i++;
-        gamePanel.iTile[mapNumber][i] = new IT_DryTree(gamePanel, 28, 12); i++;
-        gamePanel.iTile[mapNumber][i] = new IT_DryTree(gamePanel, 29, 12); i++;
-        gamePanel.iTile[mapNumber][i] = new IT_DryTree(gamePanel, 30, 12); i++;
-        gamePanel.iTile[mapNumber][i] = new IT_DryTree(gamePanel, 31, 12); i++;
-        gamePanel.iTile[mapNumber][i] = new IT_DryTree(gamePanel, 32, 12); i++;
-        gamePanel.iTile[mapNumber][i] = new IT_DryTree(gamePanel, 33, 12); i++;
+        gamePanel.iTile[mapNumber][i] = new IT_DryTree(gamePanel, 21, 27); i++;
+        gamePanel.iTile[mapNumber][i] = new IT_DryTree(gamePanel, 21, 28); i++;
+        gamePanel.iTile[mapNumber][i] = new IT_DryTree(gamePanel, 21, 29); i++;
+        gamePanel.iTile[mapNumber][i] = new IT_DryTree(gamePanel, 21, 30); i++;
+        gamePanel.iTile[mapNumber][i] = new IT_DryTree(gamePanel, 21, 31); i++;
+        gamePanel.iTile[mapNumber][i] = new IT_DryTree(gamePanel, 21, 32); i++;
+        gamePanel.iTile[mapNumber][i] = new IT_DryTree(gamePanel, 21, 33); i++;
 
         mapNumber = 2;
         i = 0;
@@ -329,17 +334,6 @@ public class AssetSetter {
         gamePanel.iTile[mapNumber][i] = new IT_MetalPlate(gamePanel, 8, 17); i++;
         gamePanel.iTile[mapNumber][i] = new IT_MetalPlate(gamePanel, 39, 31); i++;
 
-        // gamePanel.iTile[mapNumber][i] = new IT_DryTree(gamePanel, 18, 40); i++;
-        // gamePanel.iTile[mapNumber][i] = new IT_DryTree(gamePanel, 17, 40); i++;
-        // gamePanel.iTile[mapNumber][i] = new IT_DryTree(gamePanel, 16, 40); i++;
-        // gamePanel.iTile[mapNumber][i] = new IT_DryTree(gamePanel, 15, 40); i++;
-        // gamePanel.iTile[mapNumber][i] = new IT_DryTree(gamePanel, 14, 40); i++;
-        // gamePanel.iTile[mapNumber][i] = new IT_DryTree(gamePanel, 13, 40); i++;
-        // gamePanel.iTile[mapNumber][i] = new IT_DryTree(gamePanel, 13, 41); i++;
-        // gamePanel.iTile[mapNumber][i] = new IT_DryTree(gamePanel, 12, 41); i++;
-        // gamePanel.iTile[mapNumber][i] = new IT_DryTree(gamePanel, 11, 41); i++;
-        // gamePanel.iTile[mapNumber][i] = new IT_DryTree(gamePanel, 10, 41); i++;
-        // gamePanel.iTile[mapNumber][i] = new IT_DryTree(gamePanel, 10, 40); i++;
 
     }
 }
