@@ -5,7 +5,7 @@ import com.example.entity.Entity;
 
 public class OBJ_Axe extends Entity {
 
-    public static final String objName = "Woodcutter's Axe";
+    public static final String objName = "Kapak";
 
     public OBJ_Axe(GamePanel gamePanel) {
         super(gamePanel);
@@ -15,7 +15,7 @@ public class OBJ_Axe extends Entity {
         attackValue = 2;
         attackArea.width = 30;
         attackArea.height = 30;
-        description = "[Woodcutter's Axe]\nA bit rusty but still\ncan cut some trees.";
+        description = "[Kapak]\nSedikit berkarat,\nuntuk memotong kayu";
         price = 75;
         knockBackPower = 10;
         motion1_duration = 20;
