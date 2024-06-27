@@ -8,21 +8,18 @@ import com.example.monster.MON_GreenSlime;
 import com.example.monster.MON_Orc;
 import com.example.monster.MON_RedSlime;
 import com.example.monster.MON_SkeletonLord;
-import com.example.monster.Mon_Bat;
+import com.example.monster.MON_Bat;
 import com.example.object.OBJ_Axe;
 import com.example.object.OBJ_BlueHeart;
 import com.example.object.OBJ_Boots;
 import com.example.object.OBJ_Chest;
 import com.example.object.OBJ_Door;
 import com.example.object.OBJ_DoorIron;
-import com.example.object.OBJ_Heart;
 import com.example.object.OBJ_Key;
 import com.example.object.OBJ_Lantern;
-import com.example.object.OBJ_Mana_Crystal;
 import com.example.object.OBJ_Pickaxe;
 import com.example.object.OBJ_Potion_Red;
-import com.example.object.OBJ_Shield_Blue;
-import com.example.object.OBJ_Tent;
+import com.example.object.OBJ_Shield_Red;
 import com.example.tile_interactive.IT_DestructibleWall;
 import com.example.tile_interactive.IT_DryTree;
 import com.example.tile_interactive.IT_MetalPlate;
@@ -40,7 +37,6 @@ public class AssetSetter {
         int mapNumber = 0;
         int i = 0;
 
-
         gamePanel.obj[mapNumber][i] = new OBJ_Lantern(gamePanel);
         gamePanel.obj[mapNumber][i].worldX = gamePanel.tileSize * 10;
         gamePanel.obj[mapNumber][i].worldY = gamePanel.tileSize * 33;
@@ -53,18 +49,29 @@ public class AssetSetter {
         i++;
 
         gamePanel.obj[mapNumber][i] = new OBJ_Chest(gamePanel);
-        gamePanel.obj[mapNumber][i].setLoot(new OBJ_Boots(gamePanel));
+        gamePanel.obj[mapNumber][i].setLoot(new OBJ_Key(gamePanel));
         gamePanel.obj[mapNumber][i].worldX = gamePanel.tileSize * 24;
         gamePanel.obj[mapNumber][i].worldY = gamePanel.tileSize * 29;
         i++;
 
         gamePanel.obj[mapNumber][i] = new OBJ_Chest(gamePanel);
+        gamePanel.obj[mapNumber][i].setLoot(new OBJ_Potion_Red(gamePanel));
         gamePanel.obj[mapNumber][i].worldX = gamePanel.tileSize * 30;
         gamePanel.obj[mapNumber][i].worldY = gamePanel.tileSize * 15;
         i++;
 
+        gamePanel.obj[mapNumber][i] = new OBJ_Door(gamePanel);
+        gamePanel.obj[mapNumber][i].worldX = gamePanel.tileSize * 14;
+        gamePanel.obj[mapNumber][i].worldY = gamePanel.tileSize * 24;
+        i++;
+
         mapNumber = 2;
         i = 0;
+
+        gamePanel.obj[mapNumber][i] = new OBJ_Door(gamePanel);
+        gamePanel.obj[mapNumber][i].worldX = gamePanel.tileSize * 9;
+        gamePanel.obj[mapNumber][i].worldY = gamePanel.tileSize * 39;
+        i++;
 
         gamePanel.obj[mapNumber][i] = new OBJ_Chest(gamePanel);
         gamePanel.obj[mapNumber][i].setLoot(new OBJ_Pickaxe(gamePanel));
@@ -106,6 +113,21 @@ public class AssetSetter {
         gamePanel.obj[mapNumber][i] = new OBJ_BlueHeart(gamePanel);
         gamePanel.obj[mapNumber][i].worldX = gamePanel.tileSize * 25;
         gamePanel.obj[mapNumber][i].worldY = gamePanel.tileSize * 8;
+        i++;
+
+        mapNumber = 6;
+        i = 0;
+        
+        gamePanel.obj[mapNumber][i] = new OBJ_Chest(gamePanel);
+        gamePanel.obj[mapNumber][i].setLoot(new OBJ_Shield_Red(gamePanel));
+        gamePanel.obj[mapNumber][i].worldX = gamePanel.tileSize * 41;
+        gamePanel.obj[mapNumber][i].worldY = gamePanel.tileSize * 32;
+        i++;
+        
+        gamePanel.obj[mapNumber][i] = new OBJ_Chest(gamePanel);
+        gamePanel.obj[mapNumber][i].setLoot(new OBJ_Key(gamePanel));
+        gamePanel.obj[mapNumber][i].worldX = gamePanel.tileSize * 23;
+        gamePanel.obj[mapNumber][i].worldY = gamePanel.tileSize * 31;
         i++;
 
     }
@@ -204,27 +226,27 @@ public class AssetSetter {
         mapNumber = 2;
         i = 0;
 
-        gamePanel.monster[mapNumber][i] = new Mon_Bat(gamePanel);
+        gamePanel.monster[mapNumber][i] = new MON_Bat(gamePanel);
         gamePanel.monster[mapNumber][i].worldX = gamePanel.tileSize * 34;
         gamePanel.monster[mapNumber][i].worldY = gamePanel.tileSize * 39;
         i++;
 
-        gamePanel.monster[mapNumber][i] = new Mon_Bat(gamePanel);
+        gamePanel.monster[mapNumber][i] = new MON_Bat(gamePanel);
         gamePanel.monster[mapNumber][i].worldX = gamePanel.tileSize * 36;
         gamePanel.monster[mapNumber][i].worldY = gamePanel.tileSize * 25;
         i++;
 
-        gamePanel.monster[mapNumber][i] = new Mon_Bat(gamePanel);
+        gamePanel.monster[mapNumber][i] = new MON_Bat(gamePanel);
         gamePanel.monster[mapNumber][i].worldX = gamePanel.tileSize * 39;
         gamePanel.monster[mapNumber][i].worldY = gamePanel.tileSize * 26;
         i++;
 
-        gamePanel.monster[mapNumber][i] = new Mon_Bat(gamePanel);
+        gamePanel.monster[mapNumber][i] = new MON_Bat(gamePanel);
         gamePanel.monster[mapNumber][i].worldX = gamePanel.tileSize * 28;
         gamePanel.monster[mapNumber][i].worldY = gamePanel.tileSize * 11;
         i++;
 
-        gamePanel.monster[mapNumber][i] = new Mon_Bat(gamePanel);
+        gamePanel.monster[mapNumber][i] = new MON_Bat(gamePanel);
         gamePanel.monster[mapNumber][i].worldX = gamePanel.tileSize * 10;
         gamePanel.monster[mapNumber][i].worldY = gamePanel.tileSize * 19;
         i++;
@@ -238,6 +260,39 @@ public class AssetSetter {
             gamePanel.monster[mapNumber][i].worldY = gamePanel.tileSize * 16;
             i++;
         }
+
+        mapNumber = 6;
+        i = 0;
+        
+        gamePanel.monster[mapNumber][i] = new MON_Orc(gamePanel);
+        gamePanel.monster[mapNumber][i].worldX = gamePanel.tileSize * 25;
+        gamePanel.monster[mapNumber][i].worldY = gamePanel.tileSize * 20;
+        i++;
+        
+        gamePanel.monster[mapNumber][i] = new MON_Bat(gamePanel);
+        gamePanel.monster[mapNumber][i].worldX = gamePanel.tileSize * 40;
+        gamePanel.monster[mapNumber][i].worldY = gamePanel.tileSize * 17;
+        i++;
+        
+        gamePanel.monster[mapNumber][i] = new MON_Orc(gamePanel);
+        gamePanel.monster[mapNumber][i].worldX = gamePanel.tileSize * 36;
+        gamePanel.monster[mapNumber][i].worldY = gamePanel.tileSize * 28;
+        i++;
+        
+        gamePanel.monster[mapNumber][i] = new MON_Orc(gamePanel);
+        gamePanel.monster[mapNumber][i].worldX = gamePanel.tileSize * 25;
+        gamePanel.monster[mapNumber][i].worldY = gamePanel.tileSize * 20;
+        i++;
+        
+        gamePanel.monster[mapNumber][i] = new MON_Bat(gamePanel);
+        gamePanel.monster[mapNumber][i].worldX = gamePanel.tileSize * 18;
+        gamePanel.monster[mapNumber][i].worldY = gamePanel.tileSize * 31;
+        i++;
+        
+        gamePanel.monster[mapNumber][i] = new MON_Bat(gamePanel);
+        gamePanel.monster[mapNumber][i].worldX = gamePanel.tileSize * 21;
+        gamePanel.monster[mapNumber][i].worldY = gamePanel.tileSize * 26;
+        i++;
         
     }
     

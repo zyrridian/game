@@ -29,7 +29,6 @@ public class GamePanel extends JPanel implements Runnable {
     // Screen Settings
     final int originalTileSize = 16; // 16 x 16 pixels
     final int scale = 3;
-
     public final int tileSize = originalTileSize * scale; // 48 x 48 pixels
     public final int maxScreenCol = 20;
     public final int maxScreenRow = 12;
@@ -37,24 +36,22 @@ public class GamePanel extends JPanel implements Runnable {
     public final int screenHeight = tileSize * maxScreenRow; // 576 pixels
 
     // World Settings
-    public int maxWorldCol;
-    public int maxWorldRow;
     public final int maxMap = 10;
     public int currentMap = 0;
+    public int maxWorldCol;
+    public int maxWorldRow;
 
-    // Full Screen
+    // Full Screen Settings
+    public boolean fullscreenOn = false;
     int screenWidth2 = screenWidth;
     int screenHeight2 = screenHeight;
     BufferedImage tempScreen;
     Graphics2D g2;
 
-    // Options
-    public boolean fullscreenOn = false;
-
-    // FPS
+    // FPS Settings
     int FPS = 60;
 
-    // System
+    // System Objects
     public TileManager tileManager = new TileManager(this);
     public KeyHandler keyHandler = new KeyHandler(this);
     Sound music = new Sound();
@@ -72,7 +69,7 @@ public class GamePanel extends JPanel implements Runnable {
     public CutsceneManager cManager = new CutsceneManager(this);
     Thread gameThread;
 
-    // Entity and Object
+    // Entity and Object Arrays
     public Player player = new Player(this, keyHandler);
     public Entity obj[][] = new Entity[maxMap][100];
     public Entity npc[][] = new Entity[maxMap][10];
@@ -83,7 +80,7 @@ public class GamePanel extends JPanel implements Runnable {
     public ArrayList<Entity> particleList = new ArrayList<>();
     ArrayList<Entity> entityList = new ArrayList<>();
 
-    // Game State
+    // Game State Constants
     public int gameState;
     public final static int TITLE_STATE = 0;
     public final static int PLAY_STATE = 1;
@@ -98,19 +95,20 @@ public class GamePanel extends JPanel implements Runnable {
     public final static int MAP_STATE = 10;
     public final static int CUTSCENE_STATE = 11;
 
-    // Others
-    public boolean bossBattleOn = false;
-
-    // Area
+    // Area Constants
     public int currentArea;
     public int nextArea;
     public final static int OUTSIDE_AREA = 50;
     public final static int INDOOR_AREA = 51;
     public final static int DUNGEON_AREA = 52;
 
+    // Others
+    public boolean bossBattleOn = false;
+
     // Music
     public int currentMusicIndex = 0;
 
+    // Constructor
     public GamePanel () {
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
         this.setBackground(Color.black);
@@ -119,6 +117,7 @@ public class GamePanel extends JPanel implements Runnable {
         this.setFocusable(true); // game panel can be focused to received input
     }
 
+    // Initial Setup
     public void setupGame() {
         
         assetSetter.setObject();
@@ -140,6 +139,7 @@ public class GamePanel extends JPanel implements Runnable {
         
     }
 
+    // Reset Game
     public void resetGame(boolean restart) {
         // stopMusic();
         currentArea = OUTSIDE_AREA;
@@ -160,35 +160,23 @@ public class GamePanel extends JPanel implements Runnable {
         
     }
 
+    // Start Game Thread
     public void startGameThread() {
         gameThread = new Thread(this);
         gameThread.start();
     }
 
+    // Set Full Screen
     public void setFullScreen() {
-
-        // This one is lag and fps drop
-        // // Get local screen device
-        // GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-        // GraphicsDevice gd = ge.getDefaultScreenDevice();
-        // gd.setFullScreenWindow(Main.window);
-        // // Get fullscreen width and height
-        // screenWidth2 = Main.window.getWidth();
-        // screenHeight2 = Main.window.getHeight();
-
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         double width = screenSize.getWidth();
         double height = screenSize.getHeight();
-
         Main.window.setExtendedState(JFrame.MAXIMIZED_BOTH);
-
         screenWidth2 = (int) width;
         screenHeight2 = (int) height;
-        // Offset factor to be used by mouse listener or motion listener if you are using cursor in your game. Multiply your e.getX() and 3.getY() by this.
-        // fullScreenOffsetFactor = (float) screenWidth / (float) screenWidth2;
-
     }
 
+    // Run Method for Game Loop
     @Override
     public void run() {
 
@@ -214,6 +202,7 @@ public class GamePanel extends JPanel implements Runnable {
 
     }
 
+    // Update Game State
     public void update() {
         if (gameState == PLAY_STATE) {
 

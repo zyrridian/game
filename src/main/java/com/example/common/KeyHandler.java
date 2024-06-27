@@ -70,8 +70,10 @@ public class KeyHandler implements KeyListener {
             if (code == KeyEvent.VK_ENTER) {
                 gamePanel.playSoundEffect(3);
                 if (gamePanel.ui.commandNumber == 0) {
-                    gamePanel.gameState = GamePanel.PLAY_STATE;
-                    gamePanel.playMusic(0);
+                    // gamePanel.gameState = GamePanel.PLAY_STATE;
+                    // gamePanel.playMusic(0);
+                    gamePanel.gameState = GamePanel.CUTSCENE_STATE;
+                    gamePanel.cManager.sceneNumber = gamePanel.cManager.opening;
                 }
                 if (gamePanel.ui.commandNumber == 1) {
                     gamePanel.saveLoad.load();

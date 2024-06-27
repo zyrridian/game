@@ -16,6 +16,7 @@ import com.example.object.OBJ_Pickaxe;
 import com.example.object.OBJ_Potion_Red;
 import com.example.object.OBJ_Rock;
 import com.example.object.OBJ_Shield_Blue;
+import com.example.object.OBJ_Shield_Red;
 import com.example.object.OBJ_Shield_Wood;
 import com.example.object.OBJ_Sword_Normal;
 import com.example.object.OBJ_Tent;
@@ -47,6 +48,7 @@ public class EntityGenerator {
             case OBJ_Rock.objName: obj = new OBJ_Rock(gamePanel); break;
             case OBJ_Shield_Blue.objName: obj = new OBJ_Shield_Blue(gamePanel); break;
             case OBJ_Shield_Wood.objName: obj = new OBJ_Shield_Wood(gamePanel); break;
+            case OBJ_Shield_Red.objName: obj = new OBJ_Shield_Red(gamePanel); break;
             case OBJ_Sword_Normal.objName: obj = new OBJ_Sword_Normal(gamePanel); break;
             case OBJ_Tent.objName: obj = new OBJ_Tent(gamePanel); break;
         }

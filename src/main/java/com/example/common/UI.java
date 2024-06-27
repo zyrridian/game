@@ -71,7 +71,6 @@ public class UI {
     public void addMessage(String text) {
         message.add(text);
         messageCounter.add(0);
-
     }
 
     public void draw(Graphics2D g2) {
@@ -821,17 +820,20 @@ public class UI {
         textX = frameX + gamePanel.tileSize;
         textY += gamePanel.tileSize;
         g2.drawString("Move", textX, textY); textY += gamePanel.tileSize;
-        g2.drawString("Confirm/Attack", textX, textY); textY += gamePanel.tileSize;
-        g2.drawString("Shoot/Cast", textX, textY); textY += gamePanel.tileSize;
+        g2.drawString("Confirm", textX, textY); textY += gamePanel.tileSize;
+        g2.drawString("Attack", textX, textY); textY += gamePanel.tileSize;
+        g2.drawString("Guard", textX, textY); textY += gamePanel.tileSize;
+        g2.drawString("Fireball", textX, textY); textY += gamePanel.tileSize;
         g2.drawString("Character Screen", textX, textY); textY += gamePanel.tileSize;
         g2.drawString("Pause", textX, textY); textY += gamePanel.tileSize;
-        g2.drawString("Options", textX, textY); textY += gamePanel.tileSize;
 
         textX = (int) (frameX + gamePanel.tileSize * 5.7);
         textY = frameY + gamePanel.tileSize * 2;
         g2.drawString("WASD", textX, textY); textY += gamePanel.tileSize;
         g2.drawString("ENTER", textX, textY); textY += gamePanel.tileSize;
-        g2.drawString("F", textX, textY); textY += gamePanel.tileSize;
+        g2.drawString("J", textX, textY); textY += gamePanel.tileSize;
+        g2.drawString("K", textX, textY); textY += gamePanel.tileSize;
+        g2.drawString("L", textX, textY); textY += gamePanel.tileSize;
         g2.drawString("C", textX, textY); textY += gamePanel.tileSize;
         g2.drawString("ESC", textX, textY); textY += gamePanel.tileSize;
 

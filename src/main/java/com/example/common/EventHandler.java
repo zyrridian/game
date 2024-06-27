@@ -72,12 +72,12 @@ public class EventHandler {
 
 
             // ========== Teleport ========== //
-            else if (hit(0, 48, 38, "right")) teleport(4, 9, 12, GamePanel.OUTSIDE_AREA);
-            else if (hit(0, 48, 39, "right")) teleport(4, 9, 12, GamePanel.OUTSIDE_AREA);
-            else if (hit(0, 48, 40, "right")) teleport(4, 9, 12, GamePanel.OUTSIDE_AREA);
-            else if (hit(4, 9, 11, "left")) teleport(0, 48, 39, GamePanel.OUTSIDE_AREA);
-            else if (hit(4, 9, 12, "left")) teleport(0, 48, 39, GamePanel.OUTSIDE_AREA);
-            else if (hit(4, 9, 13, "left")) teleport(0, 48, 39, GamePanel.OUTSIDE_AREA);
+            else if (hit(0, 38, 38, "right")) teleport(4, 9, 12, GamePanel.OUTSIDE_AREA);
+            else if (hit(0, 38, 39, "right")) teleport(4, 9, 12, GamePanel.OUTSIDE_AREA);
+            else if (hit(0, 38, 40, "right")) teleport(4, 9, 12, GamePanel.OUTSIDE_AREA);
+            else if (hit(4, 9, 11, "left")) teleport(0, 39, 38, GamePanel.OUTSIDE_AREA);
+            else if (hit(4, 9, 12, "left")) teleport(0, 39, 38, GamePanel.OUTSIDE_AREA);
+            else if (hit(4, 9, 13, "left")) teleport(0, 39, 38, GamePanel.OUTSIDE_AREA);
 
             else if (hit(4, 33, 10, "up")) teleport(5, 24, 27, GamePanel.OUTSIDE_AREA);
             else if (hit(4, 34, 10, "up")) teleport(5, 24, 27, GamePanel.OUTSIDE_AREA);
@@ -96,6 +96,10 @@ public class EventHandler {
             else if (hit(2, 8, 7, "any")) teleport(3, 26, 41, GamePanel.DUNGEON_AREA); // To B2
             else if (hit(3, 26, 41, "any")) teleport(2, 8, 7, GamePanel.DUNGEON_AREA); // To B1
             else if (hit(3, 25, 27, "any")) skeletonLord();
+
+            else if (hit(4, 28, 18, "any")) teleport(6, 12, 16, GamePanel.DUNGEON_AREA);
+            else if (hit(4, 28, 21, "any")) teleport(6, 12, 16, GamePanel.DUNGEON_AREA);
+            else if (hit(6, 12, 16, "any")) teleport(4, 28, 18, GamePanel.OUTSIDE_AREA);
         }
 
     }
@@ -172,7 +176,6 @@ public class EventHandler {
     }
 
     public void skeletonLord() {
-
         if (!gamePanel.bossBattleOn && !Progress.skeletonLordDefeated) {
             gamePanel.gameState = GamePanel.CUTSCENE_STATE;
             gamePanel.cManager.sceneNumber = gamePanel.cManager.skeletonLord;

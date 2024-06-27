@@ -25,12 +25,12 @@ public class MON_SkeletonLord extends Entity {
         name = monName;
         defaultSpeed = 1;
         speed = defaultSpeed;
-        maxLife = 50;
+        maxLife = 200;
         life = maxLife;
         attack = 10;
-        defense = 2;
-        exp = 50;
-        knockBackPower = 5;
+        defense = 50;
+        exp = 5000;
+        knockBackPower = 15;
         sleep = true;
 
         int size = gamePanel.tileSize * 5;
@@ -120,9 +120,9 @@ public class MON_SkeletonLord extends Entity {
             inRage = true;
             getImage();
             getAttackImage();
-            defaultSpeed++;
+            defaultSpeed *= 2;
             speed = defaultSpeed;
-            attack *= 2;
+            attack *= 3;
         }
 
         // If player close to skeleton, move towards player, otherwise move randomly

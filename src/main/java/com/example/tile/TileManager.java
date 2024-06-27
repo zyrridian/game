@@ -66,6 +66,7 @@ public class TileManager {
         loadMap("/maps/dungeon02.txt", 3);
         loadMap("/maps/map02.txt", 4);
         loadMap("/maps/map03.txt", 5);
+        loadMap("/maps/labirin.txt", 6);
 
     }
 
