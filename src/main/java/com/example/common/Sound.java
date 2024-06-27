@@ -42,7 +42,7 @@ public class Sound {
         soundURL[20] = getClass().getResource("/sounds/dooropen.wav");
         soundURL[21] = getClass().getResource("/sounds/BossBattle.wav");
         soundURL[22] = getClass().getResource("/sounds/Ending.wav");
-        soundURL[23] = getClass().getResource("/sounds/Credit.wav");
+        soundURL[23] = getClass().getResource("/sounds/Credits.wav");
     }
 
     public void setFile(int i) {
