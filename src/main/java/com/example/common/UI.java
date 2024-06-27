@@ -304,7 +304,7 @@ public class UI {
 
             // Title Name
             g2.setFont(g2.getFont().deriveFont(Font.BOLD, 60F));
-            String text = "Echoes of Eternity";
+            String text = "Monster iLegend";
             int x = getXforCenteredText(text);
             int y = gamePanel.tileSize * 3;
 

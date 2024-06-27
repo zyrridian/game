@@ -11,7 +11,7 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
         
-        window = new JFrame("Echoes of Eternity");
+        window = new JFrame("Monster iLegend");
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setResizable(false);
         new Main().setIcon();

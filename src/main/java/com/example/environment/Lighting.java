@@ -36,7 +36,7 @@ public class Lighting {
         Graphics2D g2 = (Graphics2D) darknessFilter.getGraphics();
 
         if (gamePanel.player.currentLight == null) {
-            g2.setColor(new Color(0, 0, 0.1F, 0.97F));
+            g2.setColor(new Color(0, 0, 0.1F, 0.90F));
         } else {
 
             // Get the center x and y of the light circle
@@ -55,11 +55,11 @@ public class Lighting {
             color[4] = new Color(0, 0, 0.1F, 0.69F);
             color[5] = new Color(0, 0, 0.1F, 0.76F);
             color[6] = new Color(0, 0, 0.1F, 0.82F);
-            color[7] = new Color(0, 0, 0.1F, 0.87F);
-            color[8] = new Color(0, 0, 0.1F, 0.91F);
-            color[9] = new Color(0, 0, 0.1F, 0.92F);
-            color[10] = new Color(0, 0, 0.1F, 0.93F);
-            color[11] = new Color(0, 0, 0.1F, 0.94F);
+            color[7] = new Color(0, 0, 0.1F, 0.84F);
+            color[8] = new Color(0, 0, 0.1F, 0.87F);
+            color[9] = new Color(0, 0, 0.1F, 0.88F);
+            color[10] = new Color(0, 0, 0.1F, 0.89F);
+            color[11] = new Color(0, 0, 0.1F, 0.90F);
 
             // Determine the colors distance
             fraction[0] = 0F;

@@ -29,7 +29,7 @@ public class CutsceneManager {
 
     public CutsceneManager(GamePanel gamePanel) {
         this.gamePanel = gamePanel;
-        endCredit = "Program/Desain/Music/Skenario"
+        endCredit = "Program/Desain/Music/Skenario\n"
                   + "Iqbal D.\n"
                   + "Renaldy L.\n"
                   + "Rezky A.\n"
@@ -47,11 +47,8 @@ public class CutsceneManager {
         }
     }
 
-    
-
     public void scene_opening() {
 
-        // Shut the iron door
         if (scenePhase == 0) {
             // Search a vacant slot for the dummy
             for (int i = 0; i < gamePanel.npc[1].length; i++) {
@@ -68,7 +65,7 @@ public class CutsceneManager {
             scenePhase++;
         }
 
-        // Moving the camera upward and use dummy player (above this code) image because the current player image is invincible
+        // Moving the camera and use dummy player (above this code) image because the current player image is invincible
         if (scenePhase == 1) {
             gamePanel.player.worldX += 2;
             if (gamePanel.player.worldX > gamePanel.tileSize * 15) {
@@ -125,7 +122,6 @@ public class CutsceneManager {
 
        
     }
-
 
     public void scene_skeletonLord() {
 
@@ -266,8 +262,8 @@ public class CutsceneManager {
                         + "akhirnya petualang berhasil menyelamatkan pulau ini.\n"
                         + "Tapi ini bukan akhir dari segalanya, karena monster\n"
                         + "di pulau ini masih terus bermunculan tanpa henti.\n"
-                        + "Keberadaan penduduk pulau lainnya masih belum diketahui."
-                        + "Petualangan Echoes of Ethernity baru saja dimulai.";
+                        + "Keberadaan penduduk pulau lainnya masih belum diketahui.\n"
+                        + "Petualangan Monster iLegend baru saja dimulai.\n";
             drawString(alpha, 30F, 200, text, 70);
             
             if (counterReached(600)) {
