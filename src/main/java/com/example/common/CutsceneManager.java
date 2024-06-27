@@ -269,7 +269,6 @@ public class CutsceneManager {
                         + "Keberadaan penduduk pulau lainnya masih belum diketahui."
                         + "Petualangan Echoes of Ethernity baru saja dimulai.";
             drawString(alpha, 30F, 200, text, 70);
-            gamePanel.playMusic(23);
             
             if (counterReached(600)) {
                 scenePhase++;
@@ -281,6 +280,7 @@ public class CutsceneManager {
             drawString(1F, 100F, gamePanel.screenHeight / 2, "Echoes of Eternity", 40);
             
             if (counterReached(480)) {
+                gamePanel.playMusic(23);
                 scenePhase++;
             }
         }
